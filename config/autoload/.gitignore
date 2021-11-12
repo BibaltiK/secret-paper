@@ -1,0 +1,4 @@
+local.php
+*.local.php
+development.local.php
+token.global.php
