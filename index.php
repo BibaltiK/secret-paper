@@ -9,6 +9,7 @@ define('PS', '.');
 
 define('ROOT_DIR', realpath(__DIR__ ) . DS);
 define('CONFIG_DIR', ROOT_DIR . 'config' . DS);
+define('UPLOAD_DIR', ROOT_DIR . 'storage' . DS . 'data');
 
 require ROOT_DIR . DS . 'vendor/autoload.php';
 

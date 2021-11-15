@@ -6,8 +6,8 @@ phpcs.xml
 /tests/phpunit.xml
 /vendor/
 /node_modules/
+/storage/data/*/*
 phpunit.xml
-phpcs.xml
 *.cache
 *.phar
 *.neon
