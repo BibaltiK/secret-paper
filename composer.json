@@ -19,6 +19,7 @@
         "ext-openssl": "*",
         "composer/package-versions-deprecated": "^1.11.99.4",
         "laminas/laminas-component-installer": "^2.5.0",
+        "laminas/laminas-config": "^3.7",
         "laminas/laminas-config-aggregator": "^1.6.0",
         "laminas/laminas-diactoros": "^2.8.0",
         "laminas/laminas-inputfilter": "^2.12",

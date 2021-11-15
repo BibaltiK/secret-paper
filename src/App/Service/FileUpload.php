@@ -4,10 +4,10 @@ namespace App\Service;
 
 use Laminas\Diactoros\UploadedFile;
 
-class FileUpload implements FileUploadInterface
+class FileUpload
 {
     public function __construct(
-        private DirectoryCreatorInterface $directoryCreator,
+        private DirectoryCreator $directoryCreator,
         private RandomStringService $randomStringService,
     ) {
     }
@@ -16,7 +16,7 @@ class FileUpload implements FileUploadInterface
     {
         $encodedFileName = $this->randomStringService->generateRandomString();
 
-        $directory = $this->directoryCreator->createDirectoryStructureIfNotExist($encodedFileName);
+        $directory = $this->directoryCreator->createDirectoryStructure($encodedFileName);
         $directory .= $encodedFileName;
 
         $this->persistUpload($file, $directory);
@@ -26,7 +26,6 @@ class FileUpload implements FileUploadInterface
 
     private function persistUpload(UploadedFile $file, string $encodedFile): void
     {
-
         $file->moveTo($encodedFile);
     }
 }

@@ -10,7 +10,6 @@ class FileUploadInput extends FileInput
 {
     public function __construct()
     {
-
         parent::__construct('uploadFile');
 
         $this->setRequired(true);

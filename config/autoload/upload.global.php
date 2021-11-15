@@ -2,6 +2,6 @@
 
 return [
     'upload' => [
-        'maxFileSize' => 5242880,
+        'path' => '/storage/data',
     ],
 ];

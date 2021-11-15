@@ -6,27 +6,24 @@ use Psr\Log\InvalidArgumentException;
 
 use function mkdir;
 
-class DirectoryCreator implements DirectoryCreatorInterface
+class DirectoryCreator
 {
+    use DirectoryStructurTrait;
 
-    public function createDirectoryStructureIfNotExist(string $encodedFileName): string
+    public function __construct(
+        private string $uploadRootDirectory,
+    ) {
+        $this->uploadRootDirectory = trim($this->uploadRootDirectory, '/');
+    }
+
+    public function createDirectoryStructure(string $encodedFileName): string
     {
-        $uploadFileDirectory = UPLOAD_DIR . $this->getDirectoryStructure($encodedFileName);
+        $uploadFileDirectory = ROOT_DIR . DS . $this->uploadRootDirectory . $this->getDirectoryStructure($encodedFileName);
 
         if (!mkdir($uploadFileDirectory, 0755, true)) {
             throw new InvalidArgumentException(sprintf('Can not create Directory: %s', $uploadFileDirectory));
         }
-
+var_dump($uploadFileDirectory);die();
         return $uploadFileDirectory;
-    }
-
-    private function getDirectoryStructure(string $encodedFileName): string
-    {
-        $uploadFileDirectory = '';
-        for ($i=0; $i<6; $i = $i+2) {
-            $uploadFileDirectory .= '/' . substr($encodedFileName, $i, 2) ;
-        }
-
-        return $uploadFileDirectory . '/';
     }
 }

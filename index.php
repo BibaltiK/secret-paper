@@ -4,12 +4,12 @@ if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
     return false;
 }
 
-define('DS', DIRECTORY_SEPARATOR);
-define('PS', '.');
+const DS = DIRECTORY_SEPARATOR;
+const PS = '.';
 
-define('ROOT_DIR', realpath(__DIR__ ) . DS);
-define('CONFIG_DIR', ROOT_DIR . 'config' . DS);
-define('UPLOAD_DIR', ROOT_DIR . 'storage' . DS . 'data');
+define('ROOT_DIR', realpath(__DIR__));
+
+const CONFIG_DIR = ROOT_DIR . DS .'config' . DS;
 
 require ROOT_DIR . DS . 'vendor/autoload.php';
 

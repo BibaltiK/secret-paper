@@ -21,9 +21,6 @@ class ConfigProvider
     {
         return [
             'invokables' => [
-                Middleware\FileUploadMiddleware::class,
-
-                Service\DirectoryCreator::class,
                 Service\RandomStringService::class,
 
                 Input\FileUploadInput::class,
@@ -37,6 +34,7 @@ class ConfigProvider
                 Middleware\FileUploadMiddleware::class => ConfigAbstractFactory::class,
                 Middleware\FileUploadValidatorMiddleware::class => ConfigAbstractFactory::class,
 
+                Service\DirectoryCreator::class => Service\DirectoryCreatorFactory::class,
                 Service\FileUpload::class => ConfigAbstractFactory::class,
 
                 Validator\FileUploadValidator::class => ConfigAbstractFactory::class,
