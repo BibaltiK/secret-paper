@@ -24,8 +24,8 @@ class FileUploadMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $this->service->uploadFile($uploadFile);
+        $encodedFilename = $this->service->uploadFile($uploadFile);
 
-        return $handler->handle($request);
+        return $handler->handle($request->withAttribute(FileUpload::ENCODED_FILENAME, $encodedFilename));
     }
 }

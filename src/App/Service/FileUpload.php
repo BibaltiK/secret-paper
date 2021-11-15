@@ -6,12 +6,15 @@ use Laminas\Diactoros\UploadedFile;
 
 class FileUpload
 {
+    public const ENCODED_FILENAME = 'encodedFilename';
+
     public function __construct(
         private DirectoryCreator $directoryCreator,
         private RandomStringService $randomStringService,
     ) {
     }
 
+    /** @return string The generated random Filename */
     public function uploadFile(UploadedFile $file): string
     {
         $encodedFileName = $this->randomStringService->generateRandomString();
