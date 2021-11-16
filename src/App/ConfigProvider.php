@@ -4,9 +4,11 @@ namespace App;
 
 use App\Service;
 use App\Validator\Input;
+use FastRoute\Dispatcher;
 use Laminas\Config\Reader;
 use Laminas\Config\Writer;
 use Laminas\ServiceManager\AbstractFactory\ConfigAbstractFactory;
+use Mezzio\Helper\UrlHelper;
 use Mezzio\Template\TemplateRendererInterface;
 
 class ConfigProvider
@@ -26,23 +28,29 @@ class ConfigProvider
                 Writer\Json::class,
                 Reader\Json::class,
 
+                Service\MetaHydrator::class,
                 Service\RandomStringService::class,
 
                 Input\FileUploadInput::class,
+
             ],
             'factories' => [
                 Handler\FakeHandler::class => ConfigAbstractFactory::class,
                 Handler\FileUploadHandler::class => ConfigAbstractFactory::class,
                 Handler\IndexHandler::class => ConfigAbstractFactory::class,
-                Handler\SecretHandler::class => ConfigAbstractFactory::class,
+                Handler\SecretLinkHandler::class => ConfigAbstractFactory::class,
 
                 Middleware\FileUploadMiddleware::class => ConfigAbstractFactory::class,
                 Middleware\FileUploadValidatorMiddleware::class => ConfigAbstractFactory::class,
+                Middleware\MetaCreateMiddleware::class => ConfigAbstractFactory::class,
+                Middleware\MetaReadMiddleware::class => ConfigAbstractFactory::class,
+                Middleware\SecretLinkValidatorMiddleware::class => ConfigAbstractFactory::class,
 
                 Service\DirectoryCreator::class => Service\DirectoryCreatorFactory::class,
                 Service\FileUpload::class => ConfigAbstractFactory::class,
                 Service\MetaReader::class => ConfigAbstractFactory::class,
-                Service\MetaWriter::class => ConfigAbstractFactory::class,
+                Service\MetaWriter::class => Service\MetaWriterFactory::class,
+                Service\SecretLinkService::class => Service\SecertLinkServiceFactory::class,
 
                 Validator\FileUploadValidator::class => ConfigAbstractFactory::class,
             ],
@@ -61,7 +69,7 @@ class ConfigProvider
             Handler\IndexHandler::class => [
                 TemplateRendererInterface::class,
             ],
-            Handler\SecretHandler::class => [
+            Handler\SecretLinkHandler::class => [
                 TemplateRendererInterface::class,
             ],
 
@@ -71,13 +79,21 @@ class ConfigProvider
             Middleware\FileUploadValidatorMiddleware::class => [
                 Validator\FileUploadValidator::class,
             ],
+            Middleware\MetaCreateMiddleware::class => [
+                Service\MetaHydrator::class,
+                Service\MetaWriter::class,
+            ],
+            Middleware\MetaReadMiddleware::class => [
+                Service\MetaHydrator::class,
+                Service\MetaReader::class,
+            ],
+            Middleware\SecretLinkValidatorMiddleware::class => [
+                Service\SecretLinkService::class,
+            ],
 
             Service\FileUpload::class => [
                 Service\DirectoryCreator::class,
                 Service\RandomStringService::class,
-            ],
-            Service\MetaReader::class => [
-                Reader\Json::class,
             ],
             Service\MetaWriter::class => [
                 Writer\Json::class,

@@ -13,7 +13,6 @@ class DirectoryCreator
     public function __construct(
         private string $uploadRootDirectory,
     ) {
-        $this->uploadRootDirectory = trim($this->uploadRootDirectory, '/');
     }
 
     public function createDirectoryStructure(string $encodedFileName): string
@@ -23,7 +22,7 @@ class DirectoryCreator
         if (!mkdir($uploadFileDirectory, 0755, true)) {
             throw new InvalidArgumentException(sprintf('Can not create Directory: %s', $uploadFileDirectory));
         }
-var_dump($uploadFileDirectory);die();
+
         return $uploadFileDirectory;
     }
 }

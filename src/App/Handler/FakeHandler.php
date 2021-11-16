@@ -17,6 +17,7 @@ class FakeHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        die("Fake");
         return new HtmlResponse($this->template->render('app::index', ['fake' => 'fake']));
     }
 }

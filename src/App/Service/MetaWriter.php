@@ -2,18 +2,27 @@
 
 namespace App\Service;
 
-use Laminas\Config\Config;
+use App\Model\Meta;
 use Laminas\Config\Writer\Json;
 
 class MetaWriter
 {
+    use MetaJsonTrait;
+    use DirectoryStructurTrait;
+
     public function __construct(
+        private string $uploadRootDirectory,
         private Json $writer
     ) {
     }
 
-    public function write(string $file, Config $metaData): void
+    public function write(Meta $meta): void
     {
-        $this->write($file, $metaData);
+        $directory = ROOT_DIR . DS . $this->uploadRootDirectory . $this->getDirectoryStructure($meta->getServerFilename());
+        $filename = $directory . DIRECTORY_SEPARATOR . $meta->getServerFilename() . '.meta';
+
+        $json = $this->hydrateJson($meta);
+        $this->writer->toFile($filename, $json);
     }
+
 }

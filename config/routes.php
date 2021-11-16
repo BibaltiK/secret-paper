@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use App\Handler\FileUploadHandler;
+
 return static function (Mezzio\Application $app): void {
     $app->get(
         '/',
@@ -13,15 +15,24 @@ return static function (Mezzio\Application $app): void {
         [
             App\Middleware\FileUploadValidatorMiddleware::class,
             App\Middleware\FileUploadMiddleware::class,
+            App\Middleware\MetaCreateMiddleware::class,
             App\Handler\FileUploadHandler::class,
         ],
-        \App\Handler\FileUploadHandler::class
+        FileUploadHandler::class
     );
     $app->get(
-        '/{name:.+}',
+        '/fake',
         [
             App\Handler\FakeHandler::class,
         ],
         App\Handler\FakeHandler::class
+    );
+    $app->get(
+        '/{secretLink:.+}',
+        [
+            App\Middleware\SecretLinkValidatorMiddleware::class,
+            App\Handler\SecretLinkHandler::class,
+        ],
+        App\Handler\SecretLinkHandler::class
     );
 };
