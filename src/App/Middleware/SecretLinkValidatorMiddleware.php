@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Log\InvalidArgumentException;
 
 class SecretLinkValidatorMiddleware implements MiddlewareInterface
 {
@@ -20,7 +21,7 @@ class SecretLinkValidatorMiddleware implements MiddlewareInterface
         $secretName = $request->getAttribute('secretLink');
 
         if (!$this->linkService->exists($secretName)) {
-            return $handler->handle($request);
+            throw new InvalidArgumentException(sprintf('Invalid File %s', $secretName));
         }
 
         return $handler->handle($request);

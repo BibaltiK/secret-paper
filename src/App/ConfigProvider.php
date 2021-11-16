@@ -4,11 +4,9 @@ namespace App;
 
 use App\Service;
 use App\Validator\Input;
-use FastRoute\Dispatcher;
 use Laminas\Config\Reader;
 use Laminas\Config\Writer;
 use Laminas\ServiceManager\AbstractFactory\ConfigAbstractFactory;
-use Mezzio\Helper\UrlHelper;
 use Mezzio\Template\TemplateRendererInterface;
 
 class ConfigProvider
@@ -27,6 +25,8 @@ class ConfigProvider
             'invokables' => [
                 Writer\Json::class,
                 Reader\Json::class,
+
+                Handler\PdfHandler::class,
 
                 Service\MetaHydrator::class,
                 Service\RandomStringService::class,
@@ -48,7 +48,7 @@ class ConfigProvider
 
                 Service\DirectoryCreator::class => Service\DirectoryCreatorFactory::class,
                 Service\FileUpload::class => ConfigAbstractFactory::class,
-                Service\MetaReader::class => ConfigAbstractFactory::class,
+                Service\MetaReader::class => Service\MetaReaderFactory::class,
                 Service\MetaWriter::class => Service\MetaWriterFactory::class,
                 Service\SecretLinkService::class => Service\SecertLinkServiceFactory::class,
 
@@ -94,9 +94,6 @@ class ConfigProvider
             Service\FileUpload::class => [
                 Service\DirectoryCreator::class,
                 Service\RandomStringService::class,
-            ],
-            Service\MetaWriter::class => [
-                Writer\Json::class,
             ],
 
             Validator\FileUploadValidator::class => [

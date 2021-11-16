@@ -17,15 +17,4 @@ trait MetaJsonTrait
 
         return $config;
     }
-
-    private function extractJson(Config $json): Meta
-    {
-        $meta = new Meta();
-        $meta->setClientFilename($json->get('clientFilename'))
-            ->setServerFilename($json->get('serverFilename'))
-            ->setMediaType('mediaType')
-            ->setPassword('password');
-
-        return $meta;
-    }
 }

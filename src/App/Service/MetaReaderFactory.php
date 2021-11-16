@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
-use Laminas\Config\Writer\Json;
+use Laminas\Config\Reader\Json;
 use Psr\Container\ContainerInterface;
 
-class MetaWriterFactory
+class MetaReaderFactory
 {
-    public function __invoke(ContainerInterface $container): MetaWriter
+    public function __invoke(ContainerInterface $container): MetaReader
     {
         $config = $container->get('config');
         $json = $container->get(Json::class);
@@ -15,6 +15,6 @@ class MetaWriterFactory
         $config = $config['upload'];
         $path = ROOT_DIR . DIRECTORY_SEPARATOR . trim($config['path'], '/');
 
-        return new MetaWriter($path, $json);
+        return new MetaReader($path, $json);
     }
 }

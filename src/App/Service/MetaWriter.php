@@ -11,14 +11,14 @@ class MetaWriter
     use DirectoryStructurTrait;
 
     public function __construct(
-        private string $uploadRootDirectory,
+        private string $dataDirectory,
         private Json $writer
     ) {
     }
 
     public function write(Meta $meta): void
     {
-        $directory = ROOT_DIR . DS . $this->uploadRootDirectory . $this->getDirectoryStructure($meta->getServerFilename());
+        $directory = $this->dataDirectory . $this->getDirectoryStructure($meta->getServerFilename());
         $filename = $directory . DIRECTORY_SEPARATOR . $meta->getServerFilename() . '.meta';
 
         $json = $this->hydrateJson($meta);

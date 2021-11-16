@@ -19,6 +19,19 @@ class MetaHydrator
         return $meta;
     }
 
+    public function hydrateArray(array $data): Meta
+    {
+        $meta = new Meta();
+
+        $meta->setClientFilename($data['clientFilename'])
+            ->setMediaType($data['mediaType'])
+            ->setServerFilename($data['serverFilename'])
+            ->setPassword($data['password'])
+            ->setPath($data['path']);
+
+        return $meta;
+    }
+
     public function extract(Meta $meta): array
     {
         return [

@@ -28,9 +28,19 @@ return static function (Mezzio\Application $app): void {
         App\Handler\FakeHandler::class
     );
     $app->get(
+        '/pdf/{secretLink:.+}',
+        [
+            App\Middleware\SecretLinkValidatorMiddleware::class,
+            App\Middleware\MetaReadMiddleware::class,
+            App\Handler\PdfHandler::class,
+        ],
+        App\Handler\PdfHandler::class
+    );
+    $app->get(
         '/{secretLink:.+}',
         [
             App\Middleware\SecretLinkValidatorMiddleware::class,
+            App\Middleware\MetaReadMiddleware::class,
             App\Handler\SecretLinkHandler::class,
         ],
         App\Handler\SecretLinkHandler::class
