@@ -50,7 +50,7 @@ class ConfigProvider
                 Service\FileUpload::class => ConfigAbstractFactory::class,
                 Service\MetaReader::class => Service\MetaReaderFactory::class,
                 Service\MetaWriter::class => Service\MetaWriterFactory::class,
-                Service\SecretLinkService::class => Service\SecertLinkServiceFactory::class,
+                Service\SecretLinkService::class => Service\SecretLinkServiceFactory::class,
 
                 Validator\FileUploadValidator::class => ConfigAbstractFactory::class,
             ],

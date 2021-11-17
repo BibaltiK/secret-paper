@@ -5,7 +5,7 @@ namespace App\Service;
 use Laminas\Config\Writer\Json;
 use Psr\Container\ContainerInterface;
 
-class SecertLinkServiceFactory
+class SecretLinkServiceFactory
 {
     public function __invoke(ContainerInterface $container): SecretLinkService
     {
