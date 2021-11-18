@@ -26,7 +26,7 @@ class FileUploadHandler implements RequestHandlerInterface
             $data['encodedLink'] = $meta->getServerFilename();
         }
 
-        $validationMessage = $request->getAttribute(FileUploadValidator::FILE_UPLOAD_VALIDATOR_MESSAGE);
+        $data['validationMessage'] = $request->getAttribute(FileUploadValidator::FILE_UPLOAD_VALIDATOR_MESSAGE);
 
         return new HtmlResponse($this->template->render('app::uploaded', $data));
     }

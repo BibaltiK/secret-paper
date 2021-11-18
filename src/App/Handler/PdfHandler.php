@@ -14,9 +14,9 @@ class PdfHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        /** @var Meta $meta */
-        $meta = $request->getAttribute(Meta::class);
-        $body = new Stream($meta->getPath() . $meta->getServerFilename());
+        /** @var Meta $metaFile */
+        $metaFile = $request->getAttribute(Meta::class);
+        $body = new Stream($metaFile->getPath() . $metaFile->getServerFilename());
 
         return new Response($body, 200, [
             'Content-Type' => 'application/pdf',

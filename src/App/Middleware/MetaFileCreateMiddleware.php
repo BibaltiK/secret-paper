@@ -25,6 +25,10 @@ class MetaFileCreateMiddleware implements MiddlewareInterface
         $uploadFile = $request->getAttribute(UploadedFile::class);
         $encodedName = $request->getAttribute(FileUpload::ENCODED_FILENAME);
 
+        if (!$uploadFile instanceof UploadedFile) {
+            return $handler->handle($request);
+        }
+
         $metaFile = $this->hydrator->hydrate($uploadFile, $encodedName);
 
         $this->writer->write($metaFile);

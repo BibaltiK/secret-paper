@@ -2,11 +2,17 @@
 
 <div class="container-fluid">
     <h3>Secret Paper</h3>
-    <h5>Upload complete</h5>
-    <p>
-        Your link, remember it well:
-        <a href="/<?= $this->encodedLink; ?>" target="_blank">
-            <?= $_SERVER['REQUEST_SCHEME']; ?>://<?=$_SERVER['SERVER_NAME']; ?>/<?= $this->encodedLink; ?>
-        </a>
-    </p>
+    <?php if (isset($this->validationMessage['uploadFile'])): ?>
+        <?= "<br />" . $this->partial('app::/partial/validation_error_message', ['data' => $this->validationMessage['uploadFile']]); ?>
+    <?php else: ?>
+        <h5>Upload complete</h5>
+
+        <p>
+            Your link, remember it well:
+            <a href="/<?= $this->encodedLink; ?>" target="_blank">
+                <?= $_SERVER['REQUEST_SCHEME']; ?>://<?= $_SERVER['SERVER_NAME']; ?>/<?= $this->encodedLink; ?>
+            </a>
+
+        </p>
+    <?php endif; ?>
 </div>

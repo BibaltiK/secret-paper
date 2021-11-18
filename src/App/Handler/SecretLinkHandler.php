@@ -18,9 +18,9 @@ class SecretLinkHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        /** @var Meta $meta */
-        $meta = $request->getAttribute(Meta::class);
+        /** @var Meta $metaFile */
+        $metaFile = $request->getAttribute(Meta::class);
 
-        return new HtmlResponse($this->template->render('app::secret', ['pdf' => $meta->getServerFilename()]));
+        return new HtmlResponse($this->template->render('app::secret', ['pdf' => $metaFile->getServerFilename()]));
     }
 }

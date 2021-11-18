@@ -3,6 +3,7 @@
 namespace App\Middleware;
 
 use App\Service\FileUpload;
+use App\Validator\FileUploadValidator;
 use Laminas\Diactoros\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
