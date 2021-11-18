@@ -1,9 +1,8 @@
 <?php $this->headTitle('Index'); ?>
 
 <div class="container-fluid wrapper">
-    <h1><?= $this->fake ?></h1>
     <h3>Secret Paper</h3>
-    <form enctype="multipart/form-data" action="/file" method="post">
+    <form enctype="multipart/form-data" action="/" method="post">
         <input type="hidden" name="MAX_FILE_SIZE" value="5242880" />
 
         <input type="file" id="files" name="uploadFile" accept="application/pdf" />
