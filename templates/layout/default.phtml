@@ -1,4 +1,5 @@
 <?php
+
 $this->headLink()
     ->prependStylesheet('/assets/css/default.css')
     ->prependStylesheet('/assets/vendor/fontawesome/css/solid.min.css')
@@ -12,26 +13,41 @@ $this->inlineScript()
 ?>
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="robots" content="noindex" />
-        <meta name ="description" content = "Secret Paper - Hackathon Project at Nov 2021 - Topic Secret Sharing" />
-        <meta name="theme-color" content="#1a1e21" />
-        <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-        <?=$this->headMeta()?>
-        <?=$this->headLink()?>
-        <title>Secret Paper</title>
-    </head>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="robots" content="noindex"/>
+    <meta name="description" content="Secret Paper - Hackathon Project at Nov 2021 - Topic Secret Sharing"/>
+    <meta name="theme-color" content="#1a1e21"/>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon"/>
+    <?= $this->headMeta() ?>
+    <?= $this->headLink() ?>
+    <title>Secret Paper</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            fileUploadStyling();
+        })
 
-    <body>
-        <main class="container-fluid content text-center">
-            <?=$this->content?>
-        </main>
+        function fileUploadStyling() {
+            let input = document.querySelectorAll("input[type=file]");
+            let inputFile = input[0];
 
-        <?=$this->inlineScript()?>
-    </body>
+            inputFile.addEventListener('change', function (e) {
+                document.getElementById("filecontent").innerHTML = this.files[0].name;
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+<main class="container-fluid content text-center">
+    <?= $this->content ?>
+</main>
+
+<?= $this->inlineScript() ?>
+</body>
 </html>
 
 
