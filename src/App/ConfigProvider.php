@@ -42,8 +42,8 @@ class ConfigProvider
 
                 Middleware\FileUploadMiddleware::class => ConfigAbstractFactory::class,
                 Middleware\FileUploadValidatorMiddleware::class => ConfigAbstractFactory::class,
-                Middleware\MetaCreateMiddleware::class => ConfigAbstractFactory::class,
-                Middleware\MetaReadMiddleware::class => ConfigAbstractFactory::class,
+                Middleware\MetaFileCreateMiddleware::class => ConfigAbstractFactory::class,
+                Middleware\MetaFileReadMiddleware::class => ConfigAbstractFactory::class,
                 Middleware\SecretLinkValidatorMiddleware::class => ConfigAbstractFactory::class,
 
                 Service\DirectoryCreator::class => Service\DirectoryCreatorFactory::class,
@@ -79,11 +79,11 @@ class ConfigProvider
             Middleware\FileUploadValidatorMiddleware::class => [
                 Validator\FileUploadValidator::class,
             ],
-            Middleware\MetaCreateMiddleware::class => [
+            Middleware\MetaFileCreateMiddleware::class => [
                 Service\MetaModelHydrator::class,
                 Service\MetaFileWriter::class,
             ],
-            Middleware\MetaReadMiddleware::class => [
+            Middleware\MetaFileReadMiddleware::class => [
                 Service\MetaModelHydrator::class,
                 Service\MetaFileReader::class,
             ],

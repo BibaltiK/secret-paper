@@ -15,7 +15,7 @@ return static function (Mezzio\Application $app): void {
         [
             App\Middleware\FileUploadValidatorMiddleware::class,
             App\Middleware\FileUploadMiddleware::class,
-            App\Middleware\MetaCreateMiddleware::class,
+            App\Middleware\MetaFileCreateMiddleware::class,
             App\Handler\FileUploadHandler::class,
         ],
         FileUploadHandler::class
@@ -31,7 +31,7 @@ return static function (Mezzio\Application $app): void {
         '/pdf/{secretLink:.+}',
         [
             App\Middleware\SecretLinkValidatorMiddleware::class,
-            App\Middleware\MetaReadMiddleware::class,
+            App\Middleware\MetaFileReadMiddleware::class,
             App\Handler\PdfHandler::class,
         ],
         App\Handler\PdfHandler::class
@@ -40,7 +40,7 @@ return static function (Mezzio\Application $app): void {
         '/{secretLink:.+}',
         [
             App\Middleware\SecretLinkValidatorMiddleware::class,
-            App\Middleware\MetaReadMiddleware::class,
+            App\Middleware\MetaFileReadMiddleware::class,
             App\Handler\SecretLinkHandler::class,
         ],
         App\Handler\SecretLinkHandler::class

@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class MetaReadMiddleware implements MiddlewareInterface
+class MetaFileReadMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private MetaModelHydrator $hydrator,
