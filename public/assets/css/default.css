@@ -1,84 +1,76 @@
 html, body {
     font-family: "Open Sans", sans-serif;
-    color: #f0f0f0;
-    background-color: #1a1e21;
+    color: #9cbcda;
+    background-color: #1b3249;
     height: 100%;
+    padding: 20px;
 }
 
-textarea {
-    max-width: 95%;
-    min-width: 80%;
+h3 {
+    color: #719ecb;
+    margin-bottom: 50px;
 }
 
-.footer {
-    margin-top: 50px;
-    background-color: #222222;
-    width: 99%;
-}
-
-a {
-    color: #e43c5c;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ea6981;
-    text-decoration: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Nunito", sans-serif;
-}
-
-header {
-    margin-bottom: 10px;
-}
-
-.nav-link {
-    color: #f0f0f0;
-}
-
-.nav-item > a:hover, .nav-item > a:focus, .nav-item > a > span:hover, .nav-item > a > span:focus {
-    color: #f0f0f0;
-    text-decoration-color: #a52834;
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
-}
-
-.defaultbox {
-    border: 1px dotted #dee2e6 !important;
-    background-color: #373a3e;
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-.text-justify {
-    hyphens: auto;
-    text-align: justify;
-}
-
-.text-small {
-    font-size: small;
-}
-
-.text-smaller {
-    font-size: smaller;
-}
-
-.text-xx-small {
-    font-size: xx-small;
-}
-
-.content {
-    width: 80%;
-    background-color: #2c3034;
-    color: #f0f0f0;
+.wrapper {
+    width: 100%;
+    max-width: 800px;
+    background-color: #203c57;
+    border-style: dotted;
+    border-radius: 10px;
+    border-width: 2px;
     padding: 10px;
 }
 
-.external {
-    font-size: xx-small;
-    font-variant-position: super;
-    color: lightgray;
+input[type="file"]{
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0.1px;
+    height: 0.1px;
+}
+input[type="file"]:focus + label[for="files"]{
+    border: 1px solid #85E5FF;
+}
+label[for="files"]{
+    border: 1px solid #4881bb;
+    background-color: #1b3249;
+    padding: 10px;
+    margin-bottom: 50px;
+    color: #fff;
+    font-family: sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
 }
 
+label[for="files"]:hover{
+    background-color: #254665;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 50px;
+}
+
+button {
+    background-color: #254665;
+    border: 1px solid #4681bb;
+    color: #b8cfe5;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1b3249;
+}

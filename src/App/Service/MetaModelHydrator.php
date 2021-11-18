@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Model\Meta;
 use Laminas\Diactoros\UploadedFile;
 
-class MetaHydrator
+class MetaModelHydrator
 {
     public function hydrate(UploadedFile $file, string $encodedFile, string $password = ''): Meta
     {

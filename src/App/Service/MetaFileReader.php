@@ -5,10 +5,10 @@ namespace App\Service;
 use App\Model\Meta;
 use Laminas\Config\Reader\Json;
 
-class MetaReader
+class MetaFileReader
 {
-    use MetaJsonTrait;
-    use DirectoryStructurTrait;
+    use MetaFileJsonTrait;
+    use DirectoryStructureTrait;
 
     public function __construct(
         private string $dataDirectory,

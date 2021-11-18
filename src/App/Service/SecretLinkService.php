@@ -4,7 +4,7 @@ namespace App\Service;
 
 class SecretLinkService
 {
-    use DirectoryStructurTrait;
+    use DirectoryStructureTrait;
 
     public function __construct(
         private string $dataDirectory,

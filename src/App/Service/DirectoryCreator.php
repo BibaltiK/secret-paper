@@ -8,7 +8,7 @@ use function mkdir;
 
 class DirectoryCreator
 {
-    use DirectoryStructurTrait;
+    use DirectoryStructureTrait;
 
     public function __construct(
         private string $uploadRootDirectory,

@@ -3,8 +3,8 @@
 namespace App\Middleware;
 
 use App\Model\Meta;
-use App\Service\MetaHydrator;
-use App\Service\MetaReader;
+use App\Service\MetaModelHydrator;
+use App\Service\MetaFileReader;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -13,8 +13,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 class MetaReadMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private MetaHydrator $hydrator,
-        private MetaReader $reader,
+        private MetaModelHydrator $hydrator,
+        private MetaFileReader $reader,
     ) {
     }
 

@@ -4,8 +4,8 @@ namespace App\Middleware;
 
 use App\Model\Meta;
 use App\Service\FileUpload;
-use App\Service\MetaHydrator;
-use App\Service\MetaWriter;
+use App\Service\MetaModelHydrator;
+use App\Service\MetaFileWriter;
 use Laminas\Diactoros\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,8 +15,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 class MetaCreateMiddleware implements MiddlewareInterface
 {
     public function __construct(
-        private MetaHydrator $hydrator,
-        private MetaWriter $writer,
+        private MetaModelHydrator $hydrator,
+        private MetaFileWriter $writer,
     ) {
     }
 

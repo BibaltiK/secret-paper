@@ -28,7 +28,7 @@ class ConfigProvider
 
                 Handler\PdfHandler::class,
 
-                Service\MetaHydrator::class,
+                Service\MetaModelHydrator::class,
                 Service\RandomStringService::class,
 
                 Input\FileUploadInput::class,
@@ -48,8 +48,8 @@ class ConfigProvider
 
                 Service\DirectoryCreator::class => Service\DirectoryCreatorFactory::class,
                 Service\FileUpload::class => ConfigAbstractFactory::class,
-                Service\MetaReader::class => Service\MetaReaderFactory::class,
-                Service\MetaWriter::class => Service\MetaWriterFactory::class,
+                Service\MetaFileReader::class => Service\MetaFileReaderFactory::class,
+                Service\MetaFileWriter::class => Service\MetaFileWriterFactory::class,
                 Service\SecretLinkService::class => Service\SecretLinkServiceFactory::class,
 
                 Validator\FileUploadValidator::class => ConfigAbstractFactory::class,
@@ -80,12 +80,12 @@ class ConfigProvider
                 Validator\FileUploadValidator::class,
             ],
             Middleware\MetaCreateMiddleware::class => [
-                Service\MetaHydrator::class,
-                Service\MetaWriter::class,
+                Service\MetaModelHydrator::class,
+                Service\MetaFileWriter::class,
             ],
             Middleware\MetaReadMiddleware::class => [
-                Service\MetaHydrator::class,
-                Service\MetaReader::class,
+                Service\MetaModelHydrator::class,
+                Service\MetaFileReader::class,
             ],
             Middleware\SecretLinkValidatorMiddleware::class => [
                 Service\SecretLinkService::class,

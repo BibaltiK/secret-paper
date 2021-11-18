@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Model\Meta;
 use Laminas\Config\Config;
 
-trait MetaJsonTrait
+trait MetaFileJsonTrait
 {
     private function hydrateJson(Meta $meta): Config
     {

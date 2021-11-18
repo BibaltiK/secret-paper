@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-trait DirectoryStructurTrait
+trait DirectoryStructureTrait
 {
     private function getDirectoryStructure(string $encodedFileName): string
     {
